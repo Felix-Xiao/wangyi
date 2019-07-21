@@ -7,26 +7,17 @@
 </head>
 
 <body>
-    <div id="box"><img src = "fackimage.jpg" origin-src = "realimage.jpg"></div>
-    <div id="box"><img src = "fackimage.jpg" origin-src = "realimage.jpg"></div>
-    <div id="box"><img src = "fackimage.jpg" origin-src = "realimage.jpg"></div>
-    <div id="box"><img src = "fackimage.jpg" origin-src = "realimage.jpg"></div>
-    <div id="box"><img src = "fackimage.jpg" origin-src = "realimage.jpg"></div>
-    <div id="box"><img src = "fackimage.jpg" origin-src = "realimage.jpg"></div>
-    <div id="box"><img src = "fackimage.jpg" origin-src = "realimage.jpg"></div>
     <script src="jQuery.1.0.1.js"></script>
-    <script src="ld.js"></script>
-    <!-- <script src="lazyload.js"></script> -->
+    <script src="lazyload.js"></script>
+    <div id="box"><img class = "lazyload" data-src = "realimage.jpg"></div>
+    <div id="box"><img class = "lazyload" src = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src = "realimage.jpg"></div>
+    <div id="box"><img class = "lazyload" data-src = "fackimage.jpg"></div>
+    <div id="box"><img class = "lazyload" src = "fackimage.jpg" data-src = "realimage.jpg"></div>
+    <div id="box"><img class = "lazyload" src = "fackimage.jpg" data-src = "realimage.jpg"></div>
+    <div id="box"><img class = "lazyload" src = "fackimage.jpg" data-src = "realimage.jpg"></div>
+    <div id="box"><img class = "lazyload" src = "fackimage.jpg" data-src = "realimage.jpg"></div>
 	<script>
-		// console.log($("<a>"))  //创建DOM
-		// console.log($("#box"))
-		// console.log($(document))
-		// console.log($(function () {
-		// 	console.log("test")
-        // }))
-        $("img").lazyload();
-        // var aa = $("img");
-        console.log($("img").lazyload());
+        $("img").lazyload({attribute : "data-src"});
 	</script>
 </body>
 
