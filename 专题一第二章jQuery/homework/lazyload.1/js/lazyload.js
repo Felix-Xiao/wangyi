@@ -10,7 +10,11 @@
         this.settings = $.extend(defaltOpction, opctions) || {};
         var className = this.settings.className;
         this.images = Array.prototype.slice.call(elements).filter(function (ele) {
-            return ele.className.toLowerCase() === className
+            var classNameArray = ele.className.split(/\s+/);
+            var cn = classNameArray.find(function(value){
+                return value.toLowerCase() === className
+            })
+            return cn !== undefined
         });
         this.observer = null;
         this.init();

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+
+<body>
+    <script src="jQuery.1.0.1.js"></script>
+    <script src="lazyload.js"></script>
+    <div id="box"><img class = "lazyload" data-src = "realimage.jpg"></div>
+    <div id="box"><img class = "lazyload" src = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src = "realimage.jpg"></div>
+    <div id="box"><img class = "lazyload" data-src = "fackimage.jpg"></div>
+    <div id="box"><img class = "lazyload" src = "fackimage.jpg" data-src = "realimage.jpg"></div>
+    <div id="box"><img class = "lazyload" src = "fackimage.jpg" data-src = "realimage.jpg"></div>
+    <div id="box"><img class = "lazyload" src = "fackimage.jpg" data-src = "realimage.jpg"></div>
+    <div id="box"><img class = "lazyload" src = "fackimage.jpg" data-src = "realimage.jpg"></div>
+	<script>
+        $("img").lazyload({attribute : "data-src"});
+	</script>
+</body>
+
+</html>
