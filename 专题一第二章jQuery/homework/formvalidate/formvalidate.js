@@ -3,4 +3,4 @@
 
     }
 
-})(jQuery, windows)
+})(jQuery, window)

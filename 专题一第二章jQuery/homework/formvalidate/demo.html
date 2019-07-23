@@ -2,23 +2,47 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<title></title>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        html,body{
+            background-color: #eee;
+        }
+        .form-horizontal.login-form {
+            width: 600px;
+            padding: 20px;
+            border: 1px solid #bbb;
+            background-color: #fff;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin-top: -150px;
+            margin-left: -300px;
+        }
+    </style>
 </head>
-
 <body>
     <script src="jQuery.1.0.1.js"></script>
-    <script src="lazyload.js"></script>
-    <div id="box"><img class = "lazyload" data-src = "realimage.jpg"></div>
-    <div id="box"><img class = "lazyload" src = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src = "realimage.jpg"></div>
-    <div id="box"><img class = "lazyload" data-src = "fackimage.jpg"></div>
-    <div id="box"><img class = "lazyload" src = "fackimage.jpg" data-src = "realimage.jpg"></div>
-    <div id="box"><img class = "lazyload" src = "fackimage.jpg" data-src = "realimage.jpg"></div>
-    <div id="box"><img class = "lazyload" src = "fackimage.jpg" data-src = "realimage.jpg"></div>
-    <div id="box"><img class = "lazyload" src = "fackimage.jpg" data-src = "realimage.jpg"></div>
-	<script>
-        $("img").lazyload({attribute : "data-src"});
-	</script>
+    <script src="formvalidate.js"></script>
+    <form class="form-horizontal login-form">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+    <script>
+        var aa = $("input");
+        console.log(aa);
+
+    </script>
 </body>
 
 </html>
