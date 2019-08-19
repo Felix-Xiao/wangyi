@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="underscore.js"></script>
+</head>
+
+<body>
+    <script>
+        var _ = {
+            ower: 'max'
+        }
+    </script>
+    <script src="underscore.js"></script>
+    <script>
+        /*7. 问答题（25分） 有一个数组[NaN ,1,21,32,NaN,41,5]，请编写函数，将里面的NaN成员剔除，说明你的思路并附上代码。*/
+        // 取得数组并遍历，因为NaN是不等于NaN的，所以根据这个特性判断元素是否是NaN，将不是NaN的元素放到result里面，返回result。
+        function deleteNaN(array) {
+            var result = [];
+            var i = 0;
+            var length = array.length;
+            for (; i < length; i++) {
+                if (array[i] === array[i]) {
+                    result.push(array[i]);
+                }
+            }
+            return result;
+        }
+        var arry = [NaN, 1, 21, 32, NaN, 41, 5];
+        console.log(deleteNaN(arry));
+        
+        /* 8.（25分） 假定在我们的工程中，已经 占据 了 _ 对象，那么，之后我们引入 underscore，_ 就会被 underscore 夺走，请给underscore扩展一个noConflict方法放弃Underscore 的控制变量"_"，返回Underscore 对象的引用。请说明你的思路并附上代码。*/
+        var underscore = _.noConflict();
+        console.log(_);
+        console.log(underscore);
+    </script>
+</body>
+
+</html>

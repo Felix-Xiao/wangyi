@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        /* 5.问答题:假设有一个数组，它的每一项都是整数，请你编写一个函数，找出数组中的最大值和最小值。*/
+        // 传入一个数组，返回一个两个元素的数组，第一个元素为数组中的最大值，第二个为数组中的最小值
+        function getMaxMin(arry) {
+            //判断输入参数，如果是空或者长度是0则返回
+            if (arry == null || arry.length == 0) {
+                return;
+            }
+            //创建最大值和最小值变量，并初始化
+            var max = -Infinity;
+            var min = Infinity;
+            //遍历数组如果比最大值大则放在max，如果比最小值小则放在min
+            for (var i = 0; i < arry.length; i++) {
+                if (arry[i] > max) {
+                    max = arry[i];
+                }
+                if (arry[i] < min) {
+                    min = arry[i];
+                }
+            }
+            return [max, min];
+        }
+        var arry = [1, 2, 3, 4, 5, 6]
+        var result = getMaxMin(arry);
+        console.log(result);
+
+        /*6.问答题  （15分）  如何实现数组的随机排序？请写出至少两种方法（说明思路并提交代码）。*/
+        //随机算法，返回min 到 max 之间一个随机整数X, min <= X <= max, 如果max 为空，则返回0 到 min 之间的 X, 0 <= X <= min
+        function random(min, max) {
+            if (max == null) {
+                max = min;
+                min = 0;
+            }
+            return min + Math.floor(Math.random() * (max - min + 1));
+        }
+        //乱序算法
+        function shuffle(array) {
+            // 如果数组为空或者长度为0， 则返回
+            if (array == null || array.length === 0) {
+                return
+            }
+            //取得当前array的副本
+            var result = array.slice();
+            var len = array.length;
+            var index = 0;
+            // 依次遍历数组，并将当前元素和剩余的未遍历元素中的随机一个元素交换
+            for (; index < len; index++) {
+                //存储临时变量
+                var temp = result[index];
+                //取得剩余的未遍历元素中的随机一个元素的下标
+                var rand = random(index, len - 1);
+                //交换元素
+                result[index] = result[rand];
+                result[rand] = temp;
+            }
+            return result;
+        }
+        var array = [1, 2, 3, 4, 5, 6];
+        console.log(shuffle(array));
+
+        // 乱序算法2
+        function shuffle2(array) {
+            // 如果数组为空或者长度为0， 则返回
+            if (array == null || array.length === 0) {
+                return
+            }
+            //取得当前数组副本
+            var temp = array.slice();
+            var result = [];
+            //while循环temp数组，随机从当前数组中删除一个元素并放到result里面，当长度为0 时结束
+            while (temp.length > 0) {
+                result = result.concat(temp.splice(random(array.length - 1), 1));
+            }
+            return result;
+        }
+        var array = [1, 2, 3, 4, 5, 6];
+        console.log(shuffle2(array));
+
+        /*7.问答题  （15分）  请使用正则实现密码校验功能。题目要求：密码长度6-12位，由数字、小写字符、大写字母组成，但必须至少包括2种字符。*/
+        //密码长度6-12位，由数字、小写字符、大写字母组成，但必须至少包括2种字符。
+        function pwdValidate(data) {
+            //(?!pattern)正向否定预查,不匹配pattern时返回true;(?![0-9]+$) 包含0—9以外的字符;(?![a-z]+$)包含a-z以外的字符;(?![A-Z]+$)包含A-Z以外的字符;
+            //[0-9A-Za-z]包含在[0-9A-Za-z]之内的字符;{6,12}字符个数为6-12个
+            var reg = new RegExp(/^(?![0-9]+$)(?![a-z]+$)(?![A-Z]+$)[0-9A-Za-z]{6,12}$/);
+            return reg.test(data);
+        }
+        var pwdStr = '123ewrwe';
+        console.log(pwdValidate(pwdStr));
+
+        /*8.问答题  （15分）  请问如何通过正则，将左边的整数每三位添加一个逗号（按数字的千位分隔符表示法显示） ？如：12345678 转化为 12,345,678（注：暂时不考虑小数）。*/
+        //方法一：普通方法，调用时将整数作为参数传入
+        //整数格式化方法，整数每三位添加一个逗号（按数字的千位分隔符表示法显示）
+        function numFormat(num) {
+            //使用replace方法，将从右起每三位的''替换为','(除了左边是边界)
+            //正则解释：//g全局匹配，查找所有的符合匹配;?=() 正向预查用于查找任何匹配()的内容;(\B\d{3})+ 前面不是边界字符的连续3个数字，且匹配至少一次
+            //匹配从结尾开始每三位数字，但前面不可以是边界，match结果可能为["", "", ""]，将''替换为','
+            return num.toString().replace(/(?=(\B\d{3})+$)/g, ',')
+        }
+        num1 = 12345678;
+        console.log(numFormat(num1));
+
+        //方法二：将方法添加到Number原型对象上，可直接调用
+        Number.prototype.numFormat = function () {
+            //使用replace方法，将从右起每三位的''替换为','(除了左边是边界)
+            //正则解释：//g全局匹配，查找所有的符合匹配;?=() 正向预查用于查找任何匹配()的内容;(\B\d{3})+ 前面不是边界字符的连续3个数字，且匹配至少一次
+            //匹配从结尾开始每三位数字，但前面不可以是边界，match结果可能为["", "", ""]，将''替换为','
+            return this.toString().replace(/(?=(\B\d{3})+$)/g, ',')
+        }
+        num2 = 12345678;
+        console.log(num2.numFormat());
+    </script>
+</body>
+
+</html>

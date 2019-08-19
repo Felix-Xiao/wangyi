@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <!--<script src="jQuery.1.0.1.js"></script>-->
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="formvalidate.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="formvalidate.css" type="text/css">
+</head>
+
+<body>
+    <form class="form-horizontal login-form">
+        <div class="form-group">
+            <label for="exampleInputEmail1">身份证号码</label>
+            <input type="text" class="form-control" id="inputId" placeholder="Id" data-id="true" data-require="ture"
+                data-id-error="身份证号码错误">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">手机电话号码</label>
+            <input type="text" class="form-control" id="inputMobile" placeholder="Mobile" data-mobile="true"
+                data-require="ture" data-mobile-error="mobile号码错误" data-require-error="mobile不能为空">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">电子邮箱</label>
+            <input type="text" class="form-control" id="inputEmail1" placeholder="Email" data-email="true"
+                data-require="ture">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">最大值为10</label>
+            <input type="text" class="form-control" id="inputEmail1" placeholder="max" data-max="true">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">最小值为10</label>
+            <input type="text" class="form-control" id="inputEmail1" placeholder="min" data-min="true">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+    <script>
+        /*12.问答题  （25分）  web开发中表单无处不在，从邮件订阅、登陆注册到多页填写信息提交，每次都需要花费大量时间和精力处理。
+        为了让客户端表单验证变得更简单，请基于jQuery 开发一个微量级验证插件（validate），为表单提供验证功能，并提交你的代码。
+        要求：
+        （1）可以让用户去配置选项，拥有定制validate插件的能力，如：
+            $("form"). validate({
+            defaultEvent: "change"， //自定义校验触发事件
+            })
+        （2）至少包含四种表单验证方式（身份证号码验证、手机电话号码、电子邮箱验证、必填字段验证、最大值/最小值验证）。
+        */
+        var aa = $("#login-form");
+        $("input").formvalidate({
+            event: "keyup"
+        }).extendRules({
+            "max": function () {
+                return this.val() <= 10;
+            },
+            "min": function () {
+                return this.val() >= 10;
+            }
+        });
+    </script>
+</body>
+
+</html>

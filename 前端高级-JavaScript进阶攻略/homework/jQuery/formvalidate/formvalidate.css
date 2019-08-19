@@ -1,0 +1,16 @@
+html,
+body {
+    background-color: #eee;
+}
+
+.form-horizontal.login-form {
+    width: 600px;
+    padding: 20px;
+    border: 1px solid #bbb;
+    background-color: #fff;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-top: -150px;
+    margin-left: -300px;
+}

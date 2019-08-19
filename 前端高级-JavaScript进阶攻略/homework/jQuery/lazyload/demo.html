@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <script src="jQuery.1.0.1.js"></script>
+    <script src="lazyload.js"></script>
+    <style type="text/css">
+        .example {
+            height: 200px;
+            width: 200px
+        }
+    </style>
+    <div id="box"><img src="fackimage.jpg" class="lazyload example" data-src="realimage.jpg"></div>
+    <div id="box"><img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+            data-src="realimage.jpg"></div>
+    <div id="box"><img class="lazyload" data-src="fackimage.jpg"></div>
+    <div id="box"><img class="lazyload" src="fackimage.jpg" data-src="realimage.jpg"></div>
+    <div id="box"><img class="lazyload" src="fackimage.jpg" data-src="realimage.jpg"></div>
+    <div id="box"><img class="lazyload" src="fackimage.jpg" data-src="realimage.jpg"></div>
+    <div id="box"><img class="lazyload" src="fackimage.jpg" data-src="realimage.jpg"></div>
+    <script>
+        /*问答题  （25分）  
+          图片懒加载（LazyLoad）一直是前端的优化方案之一。
+          其核心思想是：先将img标签中的src链接设为同一张图片，真正的图片地址存储在img标签的自定义属性中。当js监听到该图片元素进入可视窗口时，将自定义属性中的地址存储到src属性中。
+          请基于jQuery开发一个懒加载插件，并提交你的代码。
+          */
+        $("img").lazyload({ attribute: "data-src" });
+    </script>
+</body>
+
+</html>
