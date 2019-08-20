@@ -3,6 +3,8 @@
 		version: "1.0.1",
 	}
 	var data = {};
+	//获取data-main 属性，并把它放在data 下defPaths属性中
+	data.defPaths = document.currentScript.getAttribute('data-main');
 	var cache = {};
 	var anonymousMeta = {};
 	//模块的生命周期
@@ -38,10 +40,7 @@
 
 	// 检测是否 书写路径短名称
 	function parsePaths(id) {
-		var paths = data.paths; //配置
-		if(paths == null){
-			paths = data.defPaths
-		}
+		var paths = data.paths || data.defPaths; //配置
 		if (paths && (m = id.match(PATHS_RE)) && isString(paths[m[1]])) {
 			id = paths[m[1]] + m[2]
 		}
@@ -297,6 +296,7 @@
 			data[key] = curr; //data.alias  data.paths
 		}
 	}
+
 
 	var REQUIRE_RE = /\brequire\s*\(\s*(["'])(.+?)\1\s*\)/g
 
