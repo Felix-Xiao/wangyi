@@ -1,9 +1,9 @@
-(function(global) {
+(function (global) {
 	var startUp = global.startUp = {
 		version: "1.0.1",
 	}
 	var data = {};
-	//获取data-main 属性，并把它放在data 下defPaths属性中
+	//获取data-main 属性，并把它放在data下defPaths属性中
 	data.defPaths = document.currentScript.getAttribute('data-main');
 	var cache = {};
 	var anonymousMeta = {};
@@ -17,15 +17,15 @@
 		EXECUTED: 6,
 	}
 
-	var isArray = function(obj) {
+	var isArray = function (obj) {
 		return toString.call(obj) === "[object Array]";
 	}
 
-	var isFunction = function(obj) {
+	var isFunction = function (obj) {
 		return toString.call(obj) === "[object Function]";
 	}
-	
-	var isString = function(obj) {
+
+	var isString = function (obj) {
 		return toString.call(obj) === "[object String]";
 	}
 
@@ -40,9 +40,17 @@
 
 	// 检测是否 书写路径短名称
 	function parsePaths(id) {
-		var paths = data.paths || data.defPaths; //配置
+		var paths = data.paths; //配置
+		// 获取默认短路径
+		var defPaths = data.defPaths;
 		if (paths && (m = id.match(PATHS_RE)) && isString(paths[m[1]])) {
 			id = paths[m[1]] + m[2]
+		}
+		if (defPaths != null) {
+			// 获取默认短路径最后一个字符
+			var lastC = defPaths.charAt(defPaths.length - 1);
+			// 如果默认短路径最后一个字符不是"/", 则添加"/"，并拼接id
+			id = (lastC === "/" ? defPaths : (defPaths + "/")) + id;
 		}
 		return id;
 	}
@@ -73,7 +81,7 @@
 	}
 
 	//生成绝对路径  parent child
-	startUp.resolve = function(child, parent) {
+	startUp.resolve = function (child, parent) {
 		if (!child) return "";
 		child = parseAlias(child); //检测是否有别名
 		child = parsePaths(child); // 检测是否有路径别名 依赖模块中引包的模块路径地址 require("app/c");
@@ -81,11 +89,11 @@
 		return addBase(child, parent); //添加根目录
 	}
 
-	startUp.request = function(url, callback) {
+	startUp.request = function (url, callback) {
 		var node = document.createElement("script");
 		node.src = url;
 		document.body.appendChild(node);
-		node.onload = function() {
+		node.onload = function () {
 			//node.onload = null;
 			//document.body.removeChild(node); 
 			callback();
@@ -103,7 +111,7 @@
 	}
 
 	//分析主干 (左子树 | 右子树) 上的依赖项
-	Module.prototype.load = function() {
+	Module.prototype.load = function () {
 		var module = this;
 		module.status = status.LOADING;
 		var uris = module.resolve(); //获取主干上的依赖项
@@ -141,7 +149,7 @@
 	}
 
 	//加载依赖列表中的模块
-	Module.prototype.fetch = function(requestCache) {
+	Module.prototype.fetch = function (requestCache) {
 		var module = this;
 		module.status = status.FETCHED;
 		var uri = module.uri;
@@ -159,7 +167,7 @@
 		}
 	}
 
-	Module.prototype.onload = function() {
+	Module.prototype.onload = function () {
 		var mod = this;
 		mod.status = status.LOADED;
 		if (mod.callback) {
@@ -180,7 +188,7 @@
 	}
 
 	//更改初始化数据 
-	Module.prototype.save = function(uri, meta) {
+	Module.prototype.save = function (uri, meta) {
 		var module = Module.get(uri); //是否在缓存
 		module.id = uri;
 		module.deps = meta.deps || [];
@@ -189,7 +197,7 @@
 	}
 
 	//获取模块对外的接口对象
-	Module.prototype.exec = function() {
+	Module.prototype.exec = function () {
 		var module = this;
 		//防止重复执行
 		if (module.status >= status.EXECUTING) {
@@ -203,7 +211,7 @@
 			return Module.get(require.resolve(id)).exec(); //获取接口对象
 		}
 
-		require.resolve = function(id) {
+		require.resolve = function (id) {
 			return startUp.resolve(id, uri);
 		}
 
@@ -219,7 +227,7 @@
 	}
 
 	//资源定位 解析依赖项生成绝对路径
-	Module.prototype.resolve = function() {
+	Module.prototype.resolve = function () {
 		var mod = this;
 		var ids = mod.deps; //["./a","./b"]
 		var uris = [];
@@ -230,7 +238,7 @@
 	}
 
 	//定义一个模块
-	Module.define = function(factory) {
+	Module.define = function (factory) {
 		var deps;
 		if (isFunction(factory)) {
 			//正则解析依赖项
@@ -247,14 +255,14 @@
 	}
 
 	//检测缓存对象上是否有当前模块信息
-	Module.get = function(uri, deps) {
+	Module.get = function (uri, deps) {
 		return cache[uri] || (cache[uri] = new Module(uri, deps));
 	}
 
-	Module.use = function(deps, callback, uri) {
+	Module.use = function (deps, callback, uri) {
 		var module = Module.get(uri, isArray(deps) ? deps : [deps]);
 		//所有模块都加载完毕
-		module.callback = function() {
+		module.callback = function () {
 			var exports = []; //所以依赖项模块的接口对象
 			var uris = module.resolve();
 			for (var i = 0; i < uris.length; i++) {
@@ -276,20 +284,20 @@
 	data.preload = [];
 	//获取当前项目文档的URL
 	data.cwd = document.URL.match(/[^?]*\//)[0];
-	Module.preload = function(callback) {
+	Module.preload = function (callback) {
 		var length = data.preload.length;
 		if (!length) callback();
 		//length !== 0 先加载预先设定模块
 	};
 
-	startUp.use = function(list, callback) {
+	startUp.use = function (list, callback) {
 		//检测有没有预先加载的模块  
-		Module.preload(function() {
+		Module.preload(function () {
 			Module.use(list, callback, data.cwd + "_use_" + cid()); //虚拟的根目录
 		});
 	}
 
-	startUp.config = function(options) {
+	startUp.config = function (options) {
 		var key, curr;
 		for (key in options) {
 			curr = options[key];
@@ -297,12 +305,11 @@
 		}
 	}
 
-
 	var REQUIRE_RE = /\brequire\s*\(\s*(["'])(.+?)\1\s*\)/g
 
 	function parseDependencies(code) {
 		var ret = []
-		code.replace(REQUIRE_RE, function(m, m1, m2) {
+		code.replace(REQUIRE_RE, function (m, m1, m2) {
 			if (m2) ret.push(m2);
 		});
 		return ret

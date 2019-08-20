@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title></title>
-	</head>
-	<body>
-		<script  data-main="common/js" dataMain="common/js" src="startUp.js"></script>
-		<script>
-			startUp.config({
-				paths: "common/js"
-			})
-			startUp.use(["common/js/a.js", "common/js/b.js"], function(a, b) {
-				console.log(a);
-				console.log(b);
-				console.log("startUp...");
-			});
-		</script>
-	</body>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+
+<body>
+	<script data-main="common/js" src="startUp.js"></script>
+	<script>
+		// startUp.config({
+		// 	paths: {
+		// 		"static": "common/js"
+		// 	}
+		// });
+		startUp.use(["a.js", "b.js"], function (a, b) {
+			console.log(a);
+			console.log(b);
+			console.log("startUp...");
+		});
+	</script>
+</body>
+
 </html>
