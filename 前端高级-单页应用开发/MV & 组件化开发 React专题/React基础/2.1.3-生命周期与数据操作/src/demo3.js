@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 class App extends React.Component{
 	getChildContext() {
-		return {color: "purple"};
+		return {color: "purple1"};
 	}
 
 	constructor(props) {

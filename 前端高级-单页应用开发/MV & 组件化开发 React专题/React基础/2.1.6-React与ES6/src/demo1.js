@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 
 import inp from './input'
 
+//对象和数组的解构，... 对应的是位置，和变量名字无关
 class User extends React.Component{
 	render() {
 		const {

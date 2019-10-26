@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 
+//使用context传递参数 context打破了组件之间必须通过props传递状态的过程，类似一个全局变量空间，其内容能被随意接触修改。这样导致程序不可控。
 class App extends React.Component {
+	//用来设置组件的context
 	getChildContext() {
 		return {color: "purple"};
 	}
@@ -27,12 +29,15 @@ class App extends React.Component {
 	componentWillUpdate(prevProps, prevState) {
 		console.log('App will update')
 	}
+	
 	componentDidMount() {
 		console.log('app mount')
 		window.app = this
 	}
 
 }
+
+//是为context中的字段设置类型检查，必须设置
 App.childContextTypes = {
 	color: PropTypes.string
 }
@@ -55,11 +60,9 @@ class Son1 extends React.Component{
 	componentDidMount() {
 		console.log('son mount')
 	}
-
 	componentWillUnmount() {
 		console.log('son unmount')
 	}
-
 }
 
 class GrandSon1 extends React.Component{
@@ -67,6 +70,7 @@ class GrandSon1 extends React.Component{
 		console.log('GrandSon1 rerender')
 		return (
 			<div>
+				{/* this.context.<key>即可获取 */}
 				{this.props.name} - {this.context.color}
 			</div>
 		);
@@ -84,6 +88,8 @@ class GrandSon1 extends React.Component{
 		console.log('GrandSon1 unmount')
 	}
 }
+
+//首先要类型检查，必须的
 GrandSon1.contextTypes = {
 	color: PropTypes.string
 };
