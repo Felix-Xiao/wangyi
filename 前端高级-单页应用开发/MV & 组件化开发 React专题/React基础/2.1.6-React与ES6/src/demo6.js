@@ -2,9 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 import axios from 'axios'
 
-
-
-class App extends React.Component{
+class App extends React.Component {
 	render() {
 		return (
 			<div>
@@ -13,14 +11,13 @@ class App extends React.Component{
 		);
 	}
 
-	getValue(){
+	getValue() {
 		return new Promise(resolve => {
 			setTimeout(() => {
 				resolve('ryan')
-			},3000)
+			}, 3000)
 		})
 	}
-
 
 	async componentDidMount() {
 		let {
@@ -35,21 +32,21 @@ class App extends React.Component{
 		console.log(value)
 	}
 
-	componentDidMount2() {
-		axios
-			.get('http://localhost:7777/api').then({
-				data: {
-					data
-				}
-			} => {
+	// componentDidMount2() {
+	// 	axios
+	// 		.get('http://localhost:7777/api').then({
+	// 			data: {
+	// 				data
+	// 			}
+	// 		} => {
 
-				console.log(data)
-				this.getValue().then(value=>{
-					console.log(value)
-				})
+	// 			console.log(data)
+	// 			this.getValue().then(value=>{
+	// 				console.log(value)
+	// 			})
 
-			})
-	}
+	// 		})
+	// }
 
 }
 
