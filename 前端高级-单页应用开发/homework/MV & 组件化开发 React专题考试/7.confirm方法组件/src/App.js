@@ -1,6 +1,7 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import Confirm from './Confirm';
 
+//confirm 方法返回Confirm组件,可以添加更多参数
 function confirm(props) {
 	return Confirm({
 		title: props,
