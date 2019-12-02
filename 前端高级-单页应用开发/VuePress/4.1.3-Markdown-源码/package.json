@@ -1,0 +1,21 @@
+{
+  "name": "my-docs",
+  "version": "0.0.1",
+  "description": "MYDOCS",
+  "main": "index.js",
+  "authors": {
+    "name": "max",
+    "email": "1007486612@qq.com"
+  },
+  "repository": "/my-docs",
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.0.0",
+    "@vuepress/plugin-back-to-top": "^1.0.0",
+    "@vuepress/plugin-medium-zoom": "^1.0.0"
+  }
+}
