@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" >
+        <title>transform2D</title>
+        <meta content="width=device-width, intial-scale=1.0, maximum=1.0, user-scable=0;" name="viewport"/>
+        <style>
+            *{margin: 0;padding: 0;}
+            .con{
+                width: 100px;
+                height: 100px;
+                border:1px solid green;
+                display: flex;
+                margin-bottom: 10px;
+            }
+            .translate-scale,.rotate,.skew,.scale,.translate{
+                width: 50px;
+                height: 50px;
+                background: orange;
+                margin: auto;
+                line-height: 50px;
+                text-align: center;
+                color: #ffffff;
+                transition: all .5s;
+            }
+        </style>
+    </head>
+    <body>
+       <h1>transform2D变化</h1>
+       <h3>旋转</h3>
+       <div class="con">
+            <div class="rotate">
+                旋转
+            </div>
+       </div>
+       <h3>斜切 </h3>
+       <div class="con">
+            <div class="skew">
+                斜切
+            </div>
+        </div>
+        <h3>缩放 </h3>
+        <div class="con">
+             <div class="scale">
+                    缩放
+             </div>
+         </div>
+         <h3>位移</h3>
+         <div class="con">
+            <div class="translate">
+                    位移
+            </div>
+        </div>
+        <h3>位移 + 旋转 执行顺序</h3>
+         <div class="con">
+            <div class="translate-scale">
+                    执行顺序
+            </div>
+        </div>
+    </body>
+    <script>
+        // 顺时针为正数 逆时针为负数 围绕中心点 deg
+        var rotate = document.querySelector(".rotate");
+        rotate.addEventListener("touchstart", ()=>{
+            rotate.style.WebkitTransform = "rotate(90deg)";
+        })
+        // 默认 X轴 围绕中心点 deg XY
+        var skew = document.querySelector(".skew");
+        skew.addEventListener("touchstart", ()=>{
+            skew.style.WebkitTransform = "skewX(30deg) skewY(45deg)";
+        })
+
+        // number 基于初始的大小 围绕中心点 XY
+        var scale = document.querySelector(".scale");
+        scale.addEventListener("touchstart", ()=>{
+            // scale.style.WebkitTransform = "scale(1.2, 2)";
+            scale.style.WebkitTransform = "rotate(360deg) scale(0.1)";
+        })
+        // px rem XY 默认X轴 中心点不影响
+        var translate = document.querySelector(".translate");
+        translate.addEventListener("touchstart", ()=>{
+            // translate.style.WebkitTransform = "translate(-50px,50px)";
+            translate.style.WebkitTransform = "rotate(360deg) translate(-50px,50px) scale(.1)"
+        })
+
+        // 执行顺序 先写的后执行
+        var translateScale = document.querySelector(".translate-scale");
+        translateScale.addEventListener("touchstart", ()=>{
+            // translate.style.WebkitTransform = "translate(-50px,50px)";
+            translateScale.style.WebkitTransform = "translate(30px) scale(1.5)";
+        })
+    </script>
+</html>

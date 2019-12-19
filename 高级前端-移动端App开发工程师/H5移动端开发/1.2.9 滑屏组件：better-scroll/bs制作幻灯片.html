@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Document</title>
+    <style>
+         body{
+            margin: 0;
+        }
+        body,html{
+            height: 100%;
+        }
+        ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .con{
+            width: 100vw;
+            /* height: 100vh; */
+            overflow: hidden;
+            position: relative;
+        } 
+        
+        .list{
+            width: 400vw;
+            overflow: hidden;
+            position: relative;
+        }
+        .list li{
+            width: 100vw;
+            height: 200px;
+            float: left;
+            text-align: center;
+            box-sizing: border-box;
+            font:24px/200px "微软雅黑";
+            background: chocolate;
+            color: white;
+            /* border:1px solid green; */
+        }
+        .nav{
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100vw;
+            text-align: center;
+        }
+        .nav a{
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            line-height: 12px;
+            background: white;
+        }
+        .nav a.active{
+            background: orange;
+        }
+    </style>
+    <script type="text/javascript" src="./bscroll.js"></script>
+</head>
+<body>
+    <div class="con">
+        <ul class="list">
+            <li>我是li1</li>
+            <li>我是li2</li>
+            <li>我是li3</li>
+            <li>我是li4</li>
+        </ul>
+        <nav class="nav">
+            <a class="active"></a>
+            <a></a>
+            <a></a>
+            <a></a>
+        </nav>
+    </div>
+    <script>
+       window.onload = ()=>{
+           var con = document.querySelector(".con");
+           var list= document.querySelector(".list");
+           var navs= document.querySelectorAll(".nav a");
+           var bscroll= new BScroll(con,{
+               scrollX: true,
+               scrollY:false,
+               momentum: false,
+               snap:{
+                   // 滑动距离为屏幕的百分之多少 换下一张
+                //    loop:true
+                   threshold: 0.2,
+               }
+           })
+           bscroll.on("scrollEnd",  ()=>{
+               var index = bscroll.getCurrentPage().pageX;
+               navs.forEach((nav) => {
+                   if (nav) nav.classList.remove("active");
+               })
+               navs[index].classList.add("active");
+           }) 
+       }
+    </script>
+</body>
+</html>

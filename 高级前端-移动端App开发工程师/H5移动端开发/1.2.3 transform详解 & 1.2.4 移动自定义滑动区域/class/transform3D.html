@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" >
+        <title>标题</title>
+        <meta content="width=device-width, intial-scale=1.0, maximum=1.0, user-scable=0;" name="viewport"/>
+        <style>
+            *{margin: 0;padding: 0;}
+            .con{
+                width: 200px;
+                height: 200px;
+                border:1px solid green;
+                display: flex;
+                margin-bottom: 10px;
+                /* 景深 加载*/
+                perspective: 120px;
+            }
+            .translate-scale,.translate,.scale,.skew,.rotate{
+                width: 100px;
+                height: 100px;
+                background: orange;
+                margin: auto;
+                line-height: 50px;
+                text-align: center;
+                color: #ffffff;
+                transition: all .5s;
+            }
+            .translate-scale{
+                transform-origin: left;
+            }
+            /* 改变中心点 */
+            .rotate{
+                /* 可传top bottom right left 具体的px */
+                /* transform-origin: left; */
+                transform-origin: 10px 10px;
+                /* -webkit-transition: 10px 10px; */
+            }
+
+            /* transform 变换相关的 移动端加前缀 兼容低版本浏览器 */
+        </style>
+    </head>
+    <body>
+        <h1>transform3D变换</h1>
+        <h3>旋转</h3>
+        <div class="con">
+            <div class="rotate">
+                旋转
+            </div>
+        </div>
+        <h3>位移</h3>
+        <div class="con">
+            <div class="translate">
+                位移
+            </div>
+        </div>
+        
+        <script>
+            // 旋转 顺时针，逆时针方向 围绕中心点
+            var rotate = document.querySelector(".rotate");
+            rotate.addEventListener("touchstart",()=>{
+                //一般用deg 角度    rotateX rotateY rotateZ 
+                rotate.style.WebkitTransform = "rotateY(60deg)";
+                //纸片，书本放置效果
+            })
+
+            // translate 位移px,rem xy两个方向 默认X轴 中心点不影响
+            var translate = document.querySelector(".translate");
+            translate.addEventListener("touchstart",()=>{
+                //一般用px 角度 translateY translateX translateZ
+                translate.style.WebkitTransform = "translateZ(50px)";
+            })
+
+            // transform-style 父元素在做3d变换的时候 时候保留子元素的3D转换
+        </script>
+    </body>
+</html>
