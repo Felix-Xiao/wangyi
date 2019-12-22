@@ -16,12 +16,20 @@
 <body>
     <button onclick="setSessionStorage()">setSessionStorage</button>
     <button onclick="setLocalStorage()">setLocalStorage</button>
+    <button onclick = "setMySessionStorage()">set My sessionStorage</button>
+    <button onclick="setMyLocalStorage()"> set My localStorage</button>
     <script>
         function setSessionStorage(){
             window.sessionStorage.setItem("sessionData","data1");
         }
         function setLocalStorage(){
             window.localStorage.setItem("localData","data2");
+        }
+        function setMySessionStorage(){
+            window.sessionStorage.setItem("mydata1","Mydata1");
+        }
+        function setMyLocalStorage(){
+            window.localStorage.setItem("MyData1", "Mydata1");
         }
     </script>
 </body>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang ="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            .small-box{
+                width: 100px;
+                height: 100px;
+                border: 1px solid #000;
+                background: #abcdef;
+                float: left;
+            }
+            .big-box{
+                width: 300px;
+                height: 300px;
+                border: 1px solid #000;
+                background: #fff;
+                float: left;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "big" class = "big-box" ondragenter = "dragenter(event)" ondragover = "dragover(event)" ondragleave="dragleave(event)" ondrop = "drop(event)"></div>
+        <div id = "small" class = "small-box" ondragstart = "dragestart(event)" ondrag = "drag(event)" ondragend="dragend(event)"></div>
+    </body>
+    <script>
+        function dragestart(event){
+            console.log("dragestart");
+            event.dataTransfer.setData("source", event.target.id);
+        }
+        function drag(event){
+            console.log("drag");
+        }
+        function dragend(event){
+            console.log("dragend");
+        }
+        function dragenter(event){
+            console.log("dragenter");
+        }
+        function dragover(event){
+            console.log("dragover");
+            event.preventDefault();
+        }
+        function dragleave(event){
+            console.log("dragleave");
+        }
+        function drop(event){
+            console.log("drop");
+            console.log(event.dataTransfer.getData("source"));
+            var small = document.getElementById(event.dataTransfer.getData("source"));
+            // var big = document.getElementById("big");
+            // big.appendChild(small);
+            event.target.appendChild(small);
+
+        }
+    </script>
+</html>

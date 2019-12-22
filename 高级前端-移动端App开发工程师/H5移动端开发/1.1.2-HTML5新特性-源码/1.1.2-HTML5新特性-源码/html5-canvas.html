@@ -20,5 +20,19 @@
             }
         }
     </script>
+    <canvas id = "myCanvas1" width = "400" height = "400">
+        您的浏览器不支持Canvas。
+    </canvas>
+    <script>
+        function runCanvas(){
+            var c = document.getElementById("myCanvas1");
+            if(c.getContext){
+                var ctx = c.getContext("2d");
+                ctx.font = "30px arial";
+                ctx.fillText("I'm Felix", 50, 50);
+            }
+        }
+       window.onload = runCanvas();
+    </script>
 </body>
 </html>
