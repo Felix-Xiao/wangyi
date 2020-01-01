@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>学习</title>
+    <style>
+        /*元素选择器*/
+        p{color:  red};
+        /*类选择器*/
+        .title-color1 {color : blue};
+        /*id选择器*/
+        #demo2 {background-color: blueviolet}
+        /*通配符选择器*/
+        *{background-color: cornflowerblue}
+        /*并集选择器*/
+        p,
+        .title-color2,
+        #demo2 {background-color: palegoldenrod}
+        /*组合选择器*/
+        /* 指的是p元素并且class是my-class的元素则匹配上 */
+        p.title-color {background-color: palegoldenrod}
+        /* 指的是div元素里面的子孙元素如果有class为my-class则匹配上 */
+        div .title-color1 {background-color: palegoldenrod}
+    </style>
+</head>
+
+<body>
+    <div>
+        <p id="demo" class="title-color">欢迎来学习</p>
+        <p id="demo1" class="title-color1">欢迎来学习1</p>
+        <p id="demo2" class="title-color2">欢迎来学习2</p>
+        <button onclick="myclick()">点我</button>
+    </div>
+
+</body>
+<script type="text/javascript">
+    function myclick() {
+        document.querySelector("p").innerHTML = "我的学习";
+        document.querySelectorAll("p")[2].innerHTML = "修改最后一个";
+    }
+</script>
+
+</html>
