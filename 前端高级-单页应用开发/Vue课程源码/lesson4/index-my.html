@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../lesson2/node_modules/vue/dist/vue.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div>
+      <ul>
+        <li v-for="(item, index) in myList" :key = "item.name">{{item.name}}</li>
+        <li v-for="item in obj">{{item}}</li>
+      </ul>
+      <button @click = "addList">添加数据</button>
+    </div>
+  </div>
+  <script>
+    let app = new Vue({
+      el: '#app',
+      data: {
+        myList: [
+          {name: 'vue基础课程'},
+          {name: 'vue进阶课程'},
+          {name: 'vue高级课程'},
+          {name: 'vue实战课程'},
+          {name: 'vue+webpack课程'},
+        ],
+        obj:{
+          name: "Felix",
+          age: 30
+        }
+      },
+      methods:{
+        addList(){
+          var aa = {name: '我的学习'}
+          this.myList.unshift(aa);
+        }
+      }
+    })
+  </script>
+</body>
+</html>
