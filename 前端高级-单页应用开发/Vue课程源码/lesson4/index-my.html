@@ -16,6 +16,20 @@
       </ul>
       <button @click = "addList">添加数据</button>
     </div>
+    <input type = 'radio' name = "radio" value = "1" v-model = "param"><label for= "">苹果</label>
+    <input type = 'radio' name = "radio" value = "2" v-model = "param"><label for= "">梨</label>
+    <p>{{param}}</p>
+    <label for="">
+      <input type="checkbox" v-model = "checkVal" :true-value = "trueValue" :false-value = "falseValue">
+      {{checkVal}}
+
+    </label>
+    <select name="" id="" v-model = "selected" multiple>
+      <option value="1">A</option>
+      <option value="2">B</option>
+      <option value="3">C</option>
+    </select>
+    <p>{{selected}}</p>
   </div>
   <script>
     let app = new Vue({
@@ -31,7 +45,12 @@
         obj:{
           name: "Felix",
           age: 30
-        }
+        },
+        param: 3,
+        checkVal: '',
+        trueValue: 1,
+        falseValue: 2,
+        selected: 1
       },
       methods:{
         addList(){

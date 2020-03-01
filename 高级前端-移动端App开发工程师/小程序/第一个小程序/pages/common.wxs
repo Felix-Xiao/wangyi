@@ -1,0 +1,9 @@
+
+var foo = "'hello world' from common.wxs";
+var bar = function (d) {
+  return  JSON.stringify(d);
+}
+module.exports={
+  foo111:foo,
+  bar:bar
+};

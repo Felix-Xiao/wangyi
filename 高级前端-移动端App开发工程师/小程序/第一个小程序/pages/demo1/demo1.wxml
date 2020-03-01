@@ -1,0 +1,68 @@
+<!--pages/demo1/demo1.wxml-->
+<view hidden="{{false}} " id="item-{{list[0]}}">{{message}}</view>
+
+<view>{{person.name}}</view>
+
+<view>{{list[0]}}</view>
+<!-- 控制属性 -->
+<view wx:if="{{condition==0?true:false}}">{{message}}</view>
+
+<view wx:elif="{{condition>0?true:false}}">{{person.name}}</view>
+
+<view wx:else>{{list[0]}}</view>
+
+<view>{{a+b}}</view>
+<view>{{a}}+{{b}}={{a+b}}</view>
+<view>{{person.name}} {{list[1]}}</view>
+
+<!-- 列表渲染 -->
+<view wx:for="abcdef" wx:for-item="listItem" wx:for-index="listIndex">{{listIndex+"---"+listItem}}</view>
+<block wx:for="{{list}}">
+  <text>{{index}}____</text>
+  <text>{{item}}</text>
+</block>
+
+<!-- <switch wx:for="{{objectArray}}" wx:key="unique" style="display: block;"> {{item.id}} </switch>
+<button bindtap="switch"> Switch </button>
+<button bindtap="addToFront"> Add to the front </button>
+
+<switch wx:for="{{numberArray}}" wx:key="*this" style="display: block;"> {{item}} </switch>
+<button bindtap="addNumberToFront"> Add to the front </button> -->
+
+<!-- 模板使用 -->
+<template is="msgItem" data="{{...item}}"></template>
+
+
+
+<template name="msgItem">
+  <view>
+    <text> {{index}}: {{msg}} </text>
+    <text> Time: {{time}} </text>
+  </view>
+</template>
+
+
+<wxs src="../common.wxs" module="common1" />
+<view>{{common1.foo111}}</view>
+<view>{{common1.bar(person)}}</view>
+
+<wxs module="common1">
+  var foo = "'hello world' from common.wxs";
+  var bar = function(d) {
+    return "common1";
+  }
+  module.exports = {
+    foo111: foo,
+    bar: bar
+  };
+</wxs>
+<wxs module="common1">
+  var foo = "'hello world' from common111111111.wxs";
+  var bar = function(d) {
+    return "common111111111";
+  }
+  module.exports = {
+    foo111: foo,
+    bar: bar
+  };
+</wxs>

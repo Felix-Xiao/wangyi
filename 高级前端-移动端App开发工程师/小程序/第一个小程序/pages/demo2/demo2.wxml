@@ -1,0 +1,5 @@
+<!--pages/demo2/demo2.wxml-->
+<include src="/pages/demo1/demo1"/>
+<text>pages/demo2/demo2.wxml</text>
+<template is="msgItem" data="{{...item}}"></template>
+<import src="/pages/demo1/demo1"/>
