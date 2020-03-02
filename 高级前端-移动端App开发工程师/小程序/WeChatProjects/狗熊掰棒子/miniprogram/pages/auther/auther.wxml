@@ -1,0 +1,47 @@
+<view class="index">
+  <view class="index-hd">
+    <view class="index-desc">Felix博客
+      <view class="index-version">v1.0</view>
+    </view>
+    <view class="index-auther">By:Felix</view>
+  </view>
+
+  <view class="index-bd">
+    <view class="kind-list">
+      <view class="kind-list__item">
+        <view class="kind-list__item-bd">
+          <view class="weui-cells">
+            <navigator class="navigator" url="pages/view/view" role="navigation">
+              <image class="navigator-img" src="../../images/github-fill.png"></image>
+              <view class="navigator-text">
+                GitHub
+              </view>
+              <view class="navigator-arrow">
+              </view>
+            </navigator>
+            <navigator class="navigator" url="pages/view/view" role="navigation">
+              <image class="navigator-img" src="../../images/image-text.png"></image>
+              <view class="navigator-text">
+                关于博客
+              </view>
+              <view class="navigator-arrow">
+              </view>
+            </navigator>
+            <navigator class="navigator" url="pages/view/view" role="navigation">
+              <image class="navigator-img" src="../../images/book.png"></image>
+              <view class="navigator-text">更新日志</view>
+              <view class="navigator-arrow">
+              </view>
+            </navigator>
+            <navigator class="navigator" url="pages/view/view" role="navigation">
+              <image class="navigator-img" src="../../images/edit-square.png"></image>
+              <view class="navigator-text" style="font-weight: bold;">意见反馈</view>
+              <view class="navigator-arrow">
+              </view>
+            </navigator>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,45 @@
+@import "../common/index.wxss";
+
+.index-hd {
+  padding: 80rpx;
+  text-align: center;
+  background-color: black;
+}
+
+.index-desc {
+  color: white;
+  margin-top: 0rpx;
+  font-size: 33rpx;
+}
+
+.index-version {
+  color: white;
+  font-size: 20rpx;
+  display: inline;
+}
+
+.index-auther {
+  color: rgb(245, 239, 239);
+  margin-top: 20rpx;
+  font-size: 25rpx;
+}
+
+.kind-list {
+  margin-top: 30rpx;
+  background-color: white;
+  border-radius: 20rpx;
+}
+
+.navigator {
+  height: 60rpx;
+}
+.navigator-text{
+  margin-left: 30rpx;
+  font-size: 28rpx;
+  color: rgb(104, 100, 100);
+}
+.navigator-img {
+  width: 25px;
+  height: 25px;
+  margin-left: 0rpx;
+}
