@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/demo1/demo1",
+    "pages/event1/event1",
+    "pages/demo2/demo2",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "white",
+    "restartStrategy": "homePage"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/demo1/demo1",
+        "text": "demo1"
+      },
+      {
+        "pagePath": "pages/demo2/demo2",
+        "text": "demo2"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "index"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 20000,
+    "connectSocket": 20000,
+    "uploadFile": 20000,
+    "downloadFile": 20000
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

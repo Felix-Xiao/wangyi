@@ -1,0 +1,25 @@
+/* pages/event1/event1.wxss */
+
+view {
+  display: flex;
+  margin: 10rpx;
+  background: #f0f0f0;
+  border-radius: 10rpx;
+  border: 2rpx #000 solid;
+}
+
+text {
+  display: flex;
+  justify-content: center;
+  width: 4rem;
+  text-align: center;
+  line-height: 2rem;
+}
+
+input {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  line-height: 2rem;
+  height: 2rem;
+}
