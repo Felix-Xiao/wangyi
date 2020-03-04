@@ -1,0 +1,84 @@
+@import "../common/index.wxss";
+
+.index-hd {
+  padding: 80rpx;
+  text-align: center;
+  background-color: black;
+}
+
+.searchbar-result {
+  margin-top: 0;
+  font-size: 14px;
+}
+
+.searchbar-result .weui-cell__bd {
+  padding: 2px 0 2px 20px;
+  color: #666;
+}
+
+.searchbar-result:before {
+  display: none;
+}
+
+.index-version {
+  color: white;
+  font-size: 20rpx;
+  display: inline;
+}
+
+.kind-list {
+  margin-top: 30rpx;
+  background-color: white;
+  border-radius: 20rpx;
+}
+
+.kind-list__item {
+  margin: 10px 0;
+  background-color: #fff;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.kind-list__item:first-child {
+  margin-top: 30rpx;
+}
+
+.kind-list__img {
+  width: 30px;
+  height: 30px;
+}
+
+.kind-list__item-hd {
+  padding: 20px;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.kind-list__item-hd_show {
+  opacity: 0.4;
+}
+
+.kind-list__item-bd {
+  height: 0;
+  overflow: hidden;
+}
+
+.kind-list__item-bd_show {
+  height: auto;
+}
+
+.navigator {
+  height: 60rpx;
+}
+
+.navigator-text {
+  margin-left: 30rpx;
+  font-size: 28rpx;
+  color: rgb(104, 100, 100);
+}
+
+.navigator-img {
+  width: 25px;
+  height: 25px;
+  margin-left: 0rpx;
+}
