@@ -1,0 +1,40 @@
+@import "../common/index.wxss";
+
+.page-hd {
+  height: 120rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 25rpx;
+  background-color: white;
+}
+
+.page-row {
+  display: flex;
+  flex-direction: row;
+  justify-items: space-around;
+}
+
+.page-cell-nm {
+  margin: 15rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 155rpx;
+  width: 155rpx;
+  background-color: rgb(81, 231, 236);
+  border-radius: 10rpx;
+  color: white;
+}
+
+.page-cell-fn {
+  margin: 15rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 155rpx;
+  width: 155rpx;
+  background-color: orange;
+  border-radius: 10rpx;
+  color: white;
+}

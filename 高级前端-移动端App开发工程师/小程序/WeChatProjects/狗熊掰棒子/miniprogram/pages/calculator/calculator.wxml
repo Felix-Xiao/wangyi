@@ -1,0 +1,78 @@
+<view class="index">
+  <view class="page-hd">
+    {{content}}
+  </view>
+  <view class="page-bd">
+    <view class="page-row">
+      <view id= "back" class="page-cell-fn" bindtap="onClick">
+        退格
+      </view>
+      <view id = "clean" class="page-cell-fn" bindtap="onClick">
+        清屏
+      </view>
+      <view id = "+/-"  class="page-cell-fn" bindtap="onClick">
+        +/-
+      </view>
+      <view id = "+" class="page-cell-fn" bindtap="onClick">
+        +
+      </view>
+    </view>
+    <view class="page-row">
+      <view id = "1" class="page-cell-nm" bindtap="onClick">
+        1
+      </view>
+      <view id = "2" class="page-cell-nm" bindtap="onClick">
+        2
+      </view>
+      <view id = "3" class="page-cell-nm" bindtap="onClick">
+        3
+      </view>
+      <view id = "-"  class="page-cell-fn" bindtap="onClick">
+        -
+      </view>
+    </view>
+    <view class="page-row">
+      <view id = "4" class="page-cell-nm" bindtap="onClick">
+        4
+      </view>
+      <view id = "5" class="page-cell-nm" bindtap="onClick">
+        5
+      </view>
+      <view id = "6" class="page-cell-nm" bindtap="onClick">
+        6
+      </view>
+      <view id = "×" class="page-cell-fn" bindtap="onClick">
+        ×
+      </view>
+    </view>
+    <view class="page-row">
+      <view id = "7" class="page-cell-nm" bindtap="onClick">
+        7
+      </view>
+      <view id = "8" class="page-cell-nm" bindtap="onClick">
+        8
+      </view>
+      <view id = "9" class="page-cell-nm" bindtap="onClick">
+        9
+      </view>
+      <view id = "÷" class="page-cell-fn" bindtap="onClick">
+        ÷
+      </view>
+    </view>
+    <view class="page-row">
+      <view id = "0" class="page-cell-nm" bindtap="onClick">
+        0
+      </view>
+      <view id = "point" class="page-cell-nm" bindtap="onClick">
+        .
+      </view>
+      <view id = "history" class="page-cell-nm" bindtap="onClick">
+        历史
+      </view>
+      <view id = "equal" class="page-cell-fn" bindtap="onClick">
+        =
+      </view>
+    </view>
+  </view>
+
+</view>
