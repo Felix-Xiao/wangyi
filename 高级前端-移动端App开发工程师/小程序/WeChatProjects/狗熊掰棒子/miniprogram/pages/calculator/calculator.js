@@ -152,7 +152,8 @@ Page({
       })
     } else if (e.target.id === "history") {
       this.setData({
-        content: this.data.history
+        content: this.data.history,
+        isResult: true
       })
     } else {
       if (!this.data.content.startsWith('0') && !this.data.isResult) {
@@ -165,7 +166,7 @@ Page({
         })
       } else if (this.data.isResult){
         this.setData({
-          content: e.target.id,
+          content: isNaN(parseInt(e.target.id)) ? '0' : e.target.id,
           isResult: false
         })
       }

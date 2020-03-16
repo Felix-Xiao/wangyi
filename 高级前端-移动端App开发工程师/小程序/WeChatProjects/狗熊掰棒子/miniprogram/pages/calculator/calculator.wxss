@@ -9,6 +9,10 @@
   background-color: white;
 }
 
+.page-bd {
+  margin-top: 40rpx;
+}
+
 .page-row {
   display: flex;
   flex-direction: row;
