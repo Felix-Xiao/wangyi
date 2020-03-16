@@ -7,7 +7,8 @@ Page({
   data: {
     content: '0',
     result: '',
-    history: ''
+    history: '',
+    isResult: false,
   },
 
   /**
@@ -75,12 +76,10 @@ Page({
       this.setData({
         content: this.data.content.slice(0, this.data.content.length - 1)
       })
-      console.log(e);
     } else if (e.target.id === "clean") {
       this.setData({
         content: '0'
       })
-      console.log(e);
     } else if (e.target.id === "+/-") {
       if (this.data.content.slice(0, 1) !== '-') {
         this.setData({
@@ -95,28 +94,79 @@ Page({
       this.setData({
         content: this.data.content + '.'
       })
-      console.log(e);
     } else if (e.target.id === "equal") {
-      this.data.content.splite()
-      "100+1-10".split(/[^[\+|-]|[÷] +/);
-
+      function divideMath(arr) {
+        let result = arr[0];
+        if (arr.length > 1) {
+          for (let r = 1; r < arr.length; r++)
+            result = parseFloat(result) / parseFloat(arr[r]);
+        }
+        return result;
+      }
+      function multiplyMath(arr) {
+        let result = arr[0];
+        if (arr.length > 1) {
+          for (let r = 1; r < arr.length; r++)
+            result = parseFloat(result) * parseFloat(arr[r]);
+        }
+        return result;
+      }
+      function addMath(arr) {
+        let result = arr[0];
+        if (arr.length > 1) {
+          for (let r = 1; r < arr.length; r++)
+            result = parseFloat(result) + parseFloat(arr[r]);
+        }
+        return result;
+      }
+      function reduceMath(arr) {
+        let result = arr[0];
+        if (arr.length > 1) {
+          for (let r = 1; r < arr.length; r++)
+            result = parseFloat(result) - parseFloat(arr[r]);
+        }
+        return result;
+      }
+      let result = 0;
+      let arr1 = this.data.content.split('+');
+      for (let i = 0; i < arr1.length; i++){
+        let arr2 = arr1[i].split('-');
+        if (arr2[0] === ''){
+          arr2[0] = '0';
+        }
+        for (let s = 0; s < arr2.length; s++) {
+          let arr3 = arr2[s].split('×');
+          for (let p = 0; p < arr3.length; p++) {
+            let arr4 = arr3[p].split('÷');
+            arr3[p] = divideMath(arr4);
+          }
+          arr2[s] = multiplyMath(arr3);
+        }
+        arr1[i] = reduceMath(arr2);
+      }
+      result = addMath(arr1);
       this.setData({
-        content: this.data.content.slice(0, this.data.content.length - 1),
-        history: this.data.content + "=" + this.data.result
+        content: result.toString(),
+        history: this.data.content + "=" + result,
+        isResult: true,
       })
-      console.log(e);
     } else if (e.target.id === "history") {
       this.setData({
         content: this.data.history
       })
     } else {
-      if (!this.data.content.startsWith('0')) {
+      if (!this.data.content.startsWith('0') && !this.data.isResult) {
         this.setData({
           content: this.data.content + e.target.id
         })
-      } else {
+      } else if (this.data.content.startsWith('0') && !this.data.isResult) {
         this.setData({
           content: isNaN(parseInt(e.target.id)) ? this.data.content : e.target.id
+        })
+      } else if (this.data.isResult){
+        this.setData({
+          content: e.target.id,
+          isResult: false
         })
       }
     }
