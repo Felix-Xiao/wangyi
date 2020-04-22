@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/calculator/calculator",
     "pages/all/all",
     "pages/index/index",
     "pages/auther/auther",
@@ -47,6 +48,12 @@
         "iconPath": "images/prompt.png",
         "selectedIconPath": "images/prompt-fill.png",
         "text": "关于"
+      },
+      {
+        "pagePath": "pages/calculator/calculator",
+        "iconPath": "images/prompt.png",
+        "selectedIconPath": "images/prompt-fill.png",
+        "text": "计算器"
       }
     ]
   },
