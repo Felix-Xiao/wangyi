@@ -3,7 +3,7 @@
     <mp-searchbar bindselectresult="selectResult" search="{{search}}"></mp-searchbar>
   </view>
   <view class="index-bd">
-    <view class="kind-list">
+    <view class="kind-list" wx:for="{{tagList}}" wx:for-index = "listIndex" wx:for-item="listItem">
       <view class="kind-list-item">
         <view class="kind-list-item-hd">
             <navigator class="navigator" url="pages/view/view" role="navigation">
@@ -11,11 +11,11 @@
               <view class="">
               </view>
               <view class="navigator-title-text">
-                GitHub
+                {{listItem.tagName}}
               </view>
               </view>
               <view class="navigator-description">
-                GitHub
+                {{listItem.tagDescription}}
               </view>
             </navigator>
           </view>

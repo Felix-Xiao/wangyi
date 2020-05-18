@@ -1,31 +1,36 @@
+<!--引入towxml模版入口文件，并使用模版-->
+<!-- <import src="/towxml/entry.wxml"/>
+<template is="entry" data="{{...article}}"/>  -->
 <view class="index">
   <!-- <view class="index-bd-search">
     <mp-searchbar bindselectresult="selectResult" search="{{search}}"></mp-searchbar>
   </view> -->
   <view class="index-bd">
-    <view class="kind-list">
+    <view class="kind-list" wx:for="{{articleList}}" wx:key="id" wx:for-index="listIndex" wx:for-item="listItem">
       <view class="kind-list-item">
         <view class="kind-list-item-hd">
-            <navigator class="navigator" url="pages/view/view" role="navigation">
+          <navigator class="navigator" url="/pages/article/article?url={{listItem.url}}" role="navigation">
+            <view class="navigator-context">
               <view class="navigator-title">
-              <icon class=""></icon>
-              <view class="navigator-title-text">
-                GitHub
-              </view>
+                <icon class=""></icon>
+                <view class="navigator-title-text">
+                  {{listItem.title}}
+                </view>
               </view>
               <view class="navigator-description">
-                GitHub
+                {{listItem.description}}
               </view>
               <view class="navigator-footer">
                 <view class="navigator-footer-time">
-                GitHub
+                  {{listItem.createTime}}
+                </view>
+                <view class="navigator-footer-viewer">
+                  {{listItem.viewCount}}
+                </view>
               </view>
-              <view class="navigator-footer-viewer">
-                GitHub
-              </view>
-              </view>
-            </navigator>
-          </view>
+            </view>
+          </navigator>
+        </view>
       </view>
     </view>
   </view>

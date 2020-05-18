@@ -5,7 +5,7 @@ Page({
    * Page initial data
    */
   data: {
-
+    tagList: []
   },
 
   /**
@@ -19,7 +19,19 @@ Page({
    * Lifecycle function--Called when page is initially rendered
    */
   onReady: function () {
-
+    wx.cloud.callFunction({
+      name: "getArticleList",
+      data:{page:1},
+      success: res=>{
+        let result = res.result;
+        this.setData({
+          tagList: result
+        })
+      },
+      fail: err=>{
+        console.error('[云函数] [getArticleList] 调用失败', err);
+      }
+    })
   },
 
   /**

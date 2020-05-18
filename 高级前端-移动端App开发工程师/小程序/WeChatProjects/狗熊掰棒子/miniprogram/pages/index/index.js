@@ -7,7 +7,70 @@ Page({
     userInfo: {},
     logged: false,
     takeSession: false,
-    requestResult: ''
+    requestResult: '',
+    page: 1,
+    articleList: [],
+    article: ''
+  },
+
+  onReady	: function (options) {
+    wx.cloud.callFunction({
+      name: 'getArticleList',
+      data: { page: 1 },
+      success: res => {
+        let result = res.result;
+        this.setData({
+          articleList: result.data
+        })
+        wx.stopPullDownRefresh();
+      },
+      fail: err => {
+        console.error('[云函数] [getArticleList] 调用失败', err);
+      }
+    })
+  },
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function() {
+    console.log('onPullDownRefresh');
+    wx.cloud.callFunction({
+      name: 'getArticleList',
+      data: {page : 1},
+      success: res => {
+        console.log(app.globalData);
+        let result = res.result;
+        this.setData({
+          articleList: result.data
+        })
+        //wx.stopPullDownRefresh();
+      },
+      fail: err => {
+        console.error('[云函数] [getArticleList] 调用失败', err);
+      }
+    })
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function() {
+    let page = this.data.page++;
+    wx.cloud.callFunction({
+      name: 'getArticleList',
+      data: { page: this.data.page},
+      success: res => {
+        var result = this.data.articleList.concat(res.result);
+        this.setData({
+          articleList: result.data,
+          page: page 
+        })
+        wx.stopPullDownRefresh();
+      },
+      fail: err => {
+        console.error('[云函数] [getArticleList] 调用失败', err);
+      }
+    })
   },
 
   onLoad: function() {
@@ -68,20 +131,20 @@ Page({
   },
 
   // 上传图片
-  doUpload: function () {
+  doUpload: function() {
     // 选择图片
     wx.chooseImage({
       count: 1,
       sizeType: ['compressed'],
       sourceType: ['album', 'camera'],
-      success: function (res) {
+      success: function(res) {
 
         wx.showLoading({
           title: '上传中',
         })
 
         const filePath = res.tempFilePaths[0]
-        
+
         // 上传图片
         const cloudPath = 'my-image' + filePath.match(/\.[^.]+?$/)[0]
         wx.cloud.uploadFile({
@@ -93,7 +156,7 @@ Page({
             app.globalData.fileID = res.fileID
             app.globalData.cloudPath = cloudPath
             app.globalData.imagePath = filePath
-            
+
             wx.navigateTo({
               url: '../storageConsole/storageConsole'
             })

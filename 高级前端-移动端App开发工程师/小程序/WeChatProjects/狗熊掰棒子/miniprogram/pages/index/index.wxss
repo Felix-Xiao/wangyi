@@ -50,12 +50,19 @@
 
 .navigator {
   padding: 15rpx 20rpx;
-  display: block;
+  display: flex;
+  width: 100%;
 }
 
 .kind-list__item-bd {
   height: 0;
   overflow: hidden;
+}
+
+.navigator-context {
+  content: '\e666';
+ display: block;
+
 }
 
 .navigator-title {
@@ -67,7 +74,33 @@
 }
 
 .navigator-description {
-  margin-top: 10rpx;
+  margin-top: 20rpx;
   font-size: 20rpx;
   color: rgb(104, 100, 100);
+}
+
+.navigator-footer{
+  margin-top: 20rpx;
+  display: flex;
+}
+.navigator-footer-time{
+    color: rgb(104, 100, 100);
+    font-size: 20rpx;
+    font-family: 'iconfont';
+}
+.navigator-footer-time:before {
+  content: '\e64e';
+  margin-right: 10rpx;
+}
+
+.navigator-footer-viewer{
+  margin-left: 50rpx;
+  font-size: 20rpx;
+  color: rgb(104, 100, 100);
+  content: '\e666';
+  font-family: 'iconfont';
+}
+.navigator-footer-viewer:before {
+  content: '\e666';
+  margin-right: 10rpx;
 }

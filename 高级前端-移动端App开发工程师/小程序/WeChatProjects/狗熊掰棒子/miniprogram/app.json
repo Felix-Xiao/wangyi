@@ -1,26 +1,16 @@
 {
+  "cloud": true,
   "pages": [
+    "pages/index/index",
     "pages/calculator/calculator",
     "pages/all/all",
-    "pages/index/index",
     "pages/auther/auther",
-    "pages/userConsole/userConsole",
-    "pages/storageConsole/storageConsole",
-    "pages/databaseGuide/databaseGuide",
-    "pages/addFunction/addFunction",
-    "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib",
-    "pages/openapi/openapi",
-    "pages/openapi/serverapi/serverapi",
-    "pages/openapi/callback/callback",
-    "pages/openapi/cloudid/cloudid",
-    "pages/im/im",
-    "pages/im/room/room"
-    
+    "pages/article/article"
   ],
   "window": {
+    "enablePullDownRefresh": true,
     "backgroundColor": "#F6F6F6",
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "Felix博客",
     "navigationBarTextStyle": "black"
@@ -48,12 +38,6 @@
         "iconPath": "images/prompt.png",
         "selectedIconPath": "images/prompt-fill.png",
         "text": "关于"
-      },
-      {
-        "pagePath": "pages/calculator/calculator",
-        "iconPath": "images/prompt.png",
-        "selectedIconPath": "images/prompt-fill.png",
-        "text": "计算器"
       }
     ]
   },
